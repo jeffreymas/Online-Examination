@@ -16,19 +16,19 @@ namespace ExamOnline.Controllers
     {
         private EventsRepo _repo;
 
-        public EventsController(EventsRepo eventsRepo) : base(eventsRepo)
+        public EventsController(EventsRepo eventsRepo) : base (eventsRepo)
         {
             this._repo = eventsRepo;
         }
 
         [HttpPut("{Id}")]
-        public async Task<ActionResult> Update(string Id, Events events)
+        public async Task<ActionResult> Update (string Id, Events events)
         {
             Events item = await _repo.GetById(Id);
             item.Name = events.Name;
             int updatedItem = await _repo.Update(item);
-
-            if (updatedItem > 0)
+            
+            if(updatedItem > 0)
             {
                 return Ok("Data is updated");
             }

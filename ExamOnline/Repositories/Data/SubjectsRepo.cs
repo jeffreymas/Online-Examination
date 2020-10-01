@@ -11,7 +11,6 @@ namespace ExamOnline.Repositories.Data
     {
         public SubjectsRepo(MyContext context) : base(context)
         {
-
         }
     }
 }

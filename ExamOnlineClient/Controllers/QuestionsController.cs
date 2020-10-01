@@ -31,6 +31,21 @@ namespace ExamOnlineClient.Controllers
 
         }
 
+        [Route("loadGenerate")]
+        public IActionResult Generate()
+        {
+            return View("~/Views/Questions/ExamQuestion.cshtml");
+            //if (HttpContext.Session.IsAvailable)
+            //{
+            //    if (HttpContext.Session.GetString("lvl") == "HR")
+            //    {
+            //        return View("~/Views/Employees/Approve.cshtml");
+            //    }
+            //    return Redirect("/Error");
+            //}
+            //return Redirect("/Error");
+        }
+
         public IActionResult LoadQuestion()
         {
             IEnumerable<Question> question = null;
@@ -44,7 +59,7 @@ namespace ExamOnlineClient.Controllers
             {
                 var readTask = result.Content.ReadAsAsync<List<Question>>();
                 readTask.Wait();
-                question = readTask.Result;
+                question = readTask.Result; 
             }
             else
             {
@@ -113,5 +128,32 @@ namespace ExamOnlineClient.Controllers
             var result = client.DeleteAsync("questions/" + id).Result;
             return Json(result);
         }
+
+
+
+        public IActionResult LoadGen()
+        {
+            IEnumerable<Question> question = null;
+            //var token = HttpContext.Session.GetString("token");
+            //client.DefaultRequestHeaders.Add("Authorization", token);
+            var resTask = client.GetAsync("answers/generate/");
+            //resTask.Wait();
+
+            var result = resTask.Result;
+            if (result.IsSuccessStatusCode)
+            {
+                var readTask = result.Content.ReadAsAsync<List<Question>>();
+                //readTask.Wait();
+                question = readTask.Result;
+            }
+            else
+            {
+                question = Enumerable.Empty<Question>();
+                ModelState.AddModelError(string.Empty, "Server Error try after sometimes.");
+            }
+            return Json(question);
+
+        }
+
     }
 }

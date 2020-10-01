@@ -17,6 +17,7 @@ namespace ExamOnline.Models
         public DateTimeOffset CreatedDate { get; set; }
         public DateTimeOffset? RescheduleDate { get; set; }
         public int Score { get; set; }
+        public DateTime? ExpiredDate { get; set; }
 
         public string EmployeeId { get; set; }
         [ForeignKey("Subjects")]

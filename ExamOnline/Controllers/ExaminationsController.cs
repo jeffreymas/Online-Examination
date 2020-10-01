@@ -8,6 +8,7 @@ using ExamOnline.Models;
 using ExamOnline.Repositories.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ExamOnline.Controllers
 {
@@ -27,10 +28,21 @@ namespace ExamOnline.Controllers
         public async Task<ActionResult<int>> Update(string id, Examination entity)
         {
             var getId = await _repository.GetById(id);
-            getId.RescheduleDate = entity.RescheduleDate;
-            getId.Score = entity.Score;
-            getId.EmployeeId = entity.EmployeeId;
-            getId.SubjectId = entity.SubjectId;
+            if (entity.ExpiredDate != null && getId.ExpiredDate == null)
+            {
+                getId.ExpiredDate = entity.ExpiredDate;
+            }
+            else if (entity.EmployeeId == null )
+            {
+                getId.RescheduleDate = entity.RescheduleDate;
+            }
+            else
+            {
+                getId.CreatedDate = entity.CreatedDate;
+                getId.Score = entity.Score;
+                getId.EmployeeId = entity.EmployeeId;
+                getId.SubjectId = entity.SubjectId;
+            }
             var data = await _repository.Update(getId);
             if (data.Equals(null))
             {
@@ -48,11 +60,26 @@ namespace ExamOnline.Controllers
             {
                 if (item.Status == true)
                 {
-                    count = count + 1;
+                    count = count + 10;
                 }
             }
-            examination.Score = count / 10;
-            _repository.Update(examination);
+            examination.Score = count;
+            var data = _repository.Update(examination);
+        }
+        [HttpGet]
+        [Route("details/{id}")]
+        public async Task<ActionResult> GetUserById(string id)
+        {
+            var examination = await _context.Examinations.Include("Subjects").FirstOrDefaultAsync(x => x.EmployeeId == id && x.isDelete == false);
+            return Ok(examination);
+        }
+
+        [HttpGet]
+        [Route("loadsoal/{id}")]
+        public async Task<ActionResult> LoadSoal(string id)
+        {
+            var examination = await _context.Answer.Include("Question").Include("Examination").Where(x => x.ExamId == id).ToListAsync();
+            return Ok(examination);
         }
     }
 }

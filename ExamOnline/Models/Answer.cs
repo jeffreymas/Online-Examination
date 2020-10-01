@@ -1,4 +1,5 @@
 ﻿using ExamOnline.Base;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -17,6 +18,7 @@ namespace ExamOnline.Models
         [ForeignKey ("Question")]
         public string QuestionId { get; set; }
         public Question Question { get; set; }
+
 
         public string Answers { get; set; }
         public bool Status { get; set; }

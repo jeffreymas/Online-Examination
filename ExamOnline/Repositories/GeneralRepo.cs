@@ -19,7 +19,7 @@ namespace ExamOnline.Repositories
         {
             _context = context;
         }
-        public async Task<int> Create(TEntity entity)
+        public virtual async Task<int> Create(TEntity entity)
         {
             entity.isDelete = false;
             await _context.Set<TEntity>().AddAsync(entity);
@@ -27,7 +27,7 @@ namespace ExamOnline.Repositories
             return createdItem;
         }
 
-        public async Task<int> Delete(string Id)
+        public virtual async Task<int> Delete(string Id)
         {
             var item = await GetById(Id);
             if (item == null)

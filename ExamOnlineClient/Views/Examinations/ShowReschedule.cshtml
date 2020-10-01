@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewData["Title"] = "ShowReschedule";
+    Layout = "~/Views/Layout/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header no-bd">
+                    <h5 class="modal-title"><span class="fw-mediumbold">Reschedule</span></h5>
+                    <div data-toggle="modal" data-target="#myModal" onclick="ClearScreen();">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered table-striped">
+                        <tbody>
+                            <tr hidden>
+                                <th width="30%">Id</th>
+                                <th>:</th>
+                                <td id="Id"> </td>
+                            </tr>
+                            <tr>
+                                <th width="30%">Employee</th>
+                                <th>:</th>
+                                <td id="Name"> </td>
+                            </tr>
+                            <tr>
+                                <th>Reschedule</th>
+                                <th>:</th>
+                                <td id="Res"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer no-bd">
+                    @*<button type="button" id="add" class="btn btn-outline-success" data-dismiss="modal" onclick="Save();">Insert</button>*@
+                    <button type="button" id="approve" class="btn btn-outline-success" data-dismiss="modal" onclick="approve()">Approve</button>
+                    <button type="button" id="reject" class="btn btn-outline-danger" data-dismiss="modal" onclick="reject()">Reject</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- START PAGE CONTENT-->
+    <!-- Modal -->
+    <div class="page-heading">
+        <h1 class="page-title">Reschedule</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/"><i class="la la-home font-20"></i></a>
+            </li>
+        </ol>
+    </div>
+    <div class="page-content fade-in-up">
+        <div class="ibox">
+            <div class="ibox-body">
+                <table class="table table-striped table-bordered table-hover" id="Reschedule" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Employee Id</th>
+                            <th>Subject Name</th>
+                            <th>Examination Date</th>
+                            <th>Reschedule Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- END PAGE CONTENT-->
+</div>
+@section Scripts{
+    <script src="~/js/Script/Reschedule.js"></script>
+}

@@ -12545,7 +12545,8 @@
       "Microsoft.AspNetCore.App >= 2.1.1",
       "Microsoft.AspNetCore.Razor.Design >= 2.1.2",
       "Microsoft.NETCore.App >= 2.1.0",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.1.9"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.1.9",
+      "System.Text.Encoding >= 4.3.0"
     ]
   },
   "packageFolders": {
@@ -12555,11 +12556,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\ExamOnlineClient\\ExamOnlineClient.csproj",
+      "projectUniqueName": "C:\\Users\\Jepri\\Documents\\GitHub\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\ExamOnlineClient\\ExamOnlineClient.csproj",
       "projectName": "ExamOnlineClient",
-      "projectPath": "F:\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\ExamOnlineClient\\ExamOnlineClient.csproj",
+      "projectPath": "C:\\Users\\Jepri\\Documents\\GitHub\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\ExamOnlineClient\\ExamOnlineClient.csproj",
       "packagesPath": "C:\\Users\\Jepri\\.nuget\\packages\\",
-      "outputPath": "F:\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\ExamOnlineClient\\obj\\",
+      "outputPath": "C:\\Users\\Jepri\\Documents\\GitHub\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\ExamOnlineClient\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12578,8 +12579,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "F:\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\ExamOnline\\ExamOnline.csproj": {
-              "projectPath": "F:\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\ExamOnline\\ExamOnline.csproj"
+            "C:\\Users\\Jepri\\Documents\\GitHub\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\ExamOnline\\ExamOnline.csproj": {
+              "projectPath": "C:\\Users\\Jepri\\Documents\\GitHub\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\ExamOnline\\ExamOnline.csproj"
             }
           }
         }
@@ -12612,6 +12613,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[2.1.9, )"
+          },
+          "System.Text.Encoding": {
+            "target": "Package",
+            "version": "[4.3.0, )"
           }
         },
         "imports": [

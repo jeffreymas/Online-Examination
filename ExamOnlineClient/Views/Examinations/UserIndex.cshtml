@@ -1,0 +1,87 @@
+﻿@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "UserIndex";
+    Layout = "~/Views/Layout/_Layout.cshtml";
+}
+
+
+
+<div class="content-wrapper">
+    <!-- START PAGE CONTENT-->
+    <!-- Modal -->
+    <div class="page-heading">
+        <h1 class="page-title">Online Examination</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/"><i class="la la-home font-20"></i></a>
+            </li>
+        </ol>
+    </div>
+    <div class="page-content fade-in-up">
+        <div class="ibox">
+            @*<div class="ibox-head">
+                <div class="ibox-title">Data Table</div>
+                </div>*@
+            <div class="ibox-body">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <input name="Id" class="form-control" type="hidden"
+                               placeholder="" id="Id" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label">Employee ID : @Context.Session.GetString("name")</label>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label" for="Subject">Subject : </label>
+                        <a id="Subject"></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label" for="Schedule">Schedule : </label>
+                        <a id="CreatedDate"></a>
+                    </div>
+                </div>
+                <hr>
+
+                <div data-toggle="modal" data-target="#exampleModal" onclick="ClearScreen();">
+                    &nbsp;&nbsp;&nbsp;
+                    <button data-toggle="tooltip" data-placement="right" data-animation="false" title="Add">
+                        <i class="fa fa-clock-o"></i>
+                    </button> <a> Reschedule</a>
+                    <button type="button" id="ExamPage" onclick="ExamPage();" class="btn btn-success button button4">Start</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END PAGE CONTENT-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Division</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group form-group-default">
+                            <label for="schedule">Start date:</label>
+                            <input type="datetime-local" id="Schedule" name="schedule">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="Update" onclick="Update();" data-dismiss="modal" class="btn btn-success button button4">Edit</button>
+                    
+                    <button type="button" data-dismiss="modal" class="btn btn-warning button button4">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @section Scripts{
+        <script src="~/js/Script/UserIndex.js"></script>
+    }

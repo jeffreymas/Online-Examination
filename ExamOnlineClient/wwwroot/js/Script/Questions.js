@@ -63,7 +63,7 @@ function LoadSubject(element) {
     if (arrSub.length === 0) {
         $.ajax({
             type: "Get",
-            url: "/questions/loadquestion",
+            url: "/subjects/load",
             success: function (data) {
                 arrSub = data;
                 renderDepart(element);
@@ -80,7 +80,7 @@ function renderDepart(element) {
     $option.empty();
     $option.append($('<option/>').val('0').text('Select Subject').hide());
     $.each(arrSub, function (i, val) {
-        $option.append($('<option/>').val(val.subjectId).text(val.subjects.name))
+        $option.append($('<option/>').val(val.id).text(val.name))
     });
 }
 

@@ -88,6 +88,8 @@ namespace ExamOnline.Migrations
 
                     b.Property<string>("EmployeeId");
 
+                    b.Property<DateTime?>("ExpiredDate");
+
                     b.Property<DateTimeOffset?>("RescheduleDate");
 
                     b.Property<int>("Score");
@@ -101,6 +103,26 @@ namespace ExamOnline.Migrations
                     b.HasIndex("SubjectId");
 
                     b.ToTable("tb_t_examination");
+                });
+
+            modelBuilder.Entity("ExamOnline.Models.Notifications", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTimeOffset>("CreatedDate");
+
+                    b.Property<string>("EmployeeId");
+
+                    b.Property<string>("Message");
+
+                    b.Property<DateTimeOffset>("RequestedDate");
+
+                    b.Property<bool>("isDelete");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Notifications");
                 });
 
             modelBuilder.Entity("ExamOnline.Models.Question", b =>

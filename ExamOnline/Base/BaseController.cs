@@ -25,18 +25,20 @@ namespace ExamOnline.Base
         public async Task<IEnumerable<TEntity>> GetAll() => await _repo.GetAll();
 
         [HttpGet("{Id}")]
-        public async Task<ActionResult<TEntity>> GetById(string Id) => await _repo.GetById(Id);
+        public async virtual Task<ActionResult<TEntity>> GetById(string Id) => await _repo.GetById(Id);
 
         [HttpPost]
-        public async Task<ActionResult<TEntity>> Post(TEntity entity)
+        public virtual async Task<ActionResult<TEntity>> Post(TEntity entity)
         {
-            var data = await _repo.Create(entity);
+            int data = await _repo.Create(entity);
             if (data > 0)
             {
                 return Ok("Data Created");
             }
-            return BadRequest("Created Failed!");
+                return BadRequest("Created Failed!");
         }
+            
+        
 
         [HttpDelete("{Id}")]
         public async Task<ActionResult<int>> Delete(string Id)
