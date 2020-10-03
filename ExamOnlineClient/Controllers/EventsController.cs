@@ -92,7 +92,6 @@ namespace ExamOnlineClient.Controllers
             HttpContext.Session.SetString("id", Id);
             bool result = true;
             return Json(new { success = result });
-
         }
     }
 }

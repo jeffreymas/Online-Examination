@@ -35,7 +35,7 @@ namespace ExamOnline.Repositories.Data
             entity.isDelete = false;
             await _context.Set<Examination>().AddAsync(entity);
             var createdItem = await _context.SaveChangesAsync();
-            var list = _context.Question.Where(x => x.SubjectId == entity.SubjectId).ToArray();
+            var list = _context.Question.Where(x => x.SubjectId == entity.SubjectId && x.isDelete == false).ToArray();
             var eof = list.Length;
             string[] qid = new string[10];
             bool cek = false;
@@ -98,8 +98,8 @@ namespace ExamOnline.Repositories.Data
         public List<Examination> GetByUser(string Id)
         {
             var item = _context.Examinations.Include("Subjects").Where(x => x.EmployeeId == Id).ToList();
-
-            if (item == null)
+            
+            if(item == null)
             {
                 return null;
             }
@@ -108,5 +108,7 @@ namespace ExamOnline.Repositories.Data
                 return item;
             }
         }
+
+        
     }
 }

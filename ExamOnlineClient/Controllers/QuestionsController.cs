@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using ExamOnline.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -18,32 +19,25 @@ namespace ExamOnlineClient.Controllers
         };
         public IActionResult Index()
         {
-            return View("~/Views/Questions/ManageQuestions.cshtml");
-            //if (HttpContext.Session.IsAvailable)
-            //{
-            //    if (HttpContext.Session.GetString("lvl") == "HR")
-            //    {
-
-            //    }
-            //    return Redirect("/Error");
-            //}
-            //return Redirect("/Error");
+            var roleName = HttpContext.Session.GetString("role");
+            if (roleName == "Trainer" || roleName == "Admin")
+            {
+                return View("~/Views/Questions/ManageQuestions.cshtml");
+            }
+            return Redirect("/notfound");
+            
 
         }
 
         [Route("loadGenerate")]
         public IActionResult Generate()
         {
-            return View("~/Views/Questions/ExamQuestion.cshtml");
-            //if (HttpContext.Session.IsAvailable)
-            //{
-            //    if (HttpContext.Session.GetString("lvl") == "HR")
-            //    {
-            //        return View("~/Views/Employees/Approve.cshtml");
-            //    }
-            //    return Redirect("/Error");
-            //}
-            //return Redirect("/Error");
+            var roleName = HttpContext.Session.GetString("role");
+            if (roleName == "Trainer" || roleName == "Admin")
+            {
+                return View("~/Views/Questions/ExamQuestion.cshtml");
+            }
+            return Redirect("/notfound");
         }
 
         public IActionResult LoadQuestion()

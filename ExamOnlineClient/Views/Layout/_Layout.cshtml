@@ -85,34 +85,6 @@
                     </div>
                 </div>
                 <ul class="side-menu metismenu">
-                    @if (role == "Trainer")
-                    {
-                        <li>
-                            <a href="/Examinations">
-                                <i class="sidebar-item-icon fa fa-th-large"></i>
-                                <span class="nav-label">Dashboard</span>
-                            </a>
-                        </li>
-                    }
-                    else if (role == "Trainee")
-                    {
-                        <li>
-                            <a href="/examinations/userindex">
-                                <i class="sidebar-item-icon fa fa-th-large"></i>
-                                <span class="nav-label">Dashboard</span>
-                            </a>
-                        </li>
-                    }
-                    else
-                    {
-                        <li>
-                            <a href="/events">
-                                <i class="sidebar-item-icon fa fa-th-large"></i>
-                                <span class="nav-label">Dashboard</span>
-                            </a>
-                        </li>
-                    }
-
                     <li class="heading">FEATURES</li>
                     @if (role == "Admin" || role == "Trainer")
                     {
@@ -143,12 +115,6 @@
                             <a href="/events">
                                 <i class="sidebar-item-icon fa fa-window-maximize"></i>
                                 <span class="nav-label">Events</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/eventdetails">
-                                <i class="sidebar-item-icon fa fa-window-restore"></i>
-                                <span class="nav-label">Events Details</span>
                             </a>
                         </li>
                         <li>

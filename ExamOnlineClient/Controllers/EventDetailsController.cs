@@ -67,7 +67,6 @@ namespace ExamOnlineClient.Controllers
                                 traineesToView.Add(employee);
                             }
                         }
-                        
                     }
                 }
                 else
@@ -95,7 +94,7 @@ namespace ExamOnlineClient.Controllers
                 employeeList = readTask.Result;
                 foreach (var employee in employeeList)
                 {
-                    if (employee.roleName == "Trainee" || employee.roleName == "Trainer")
+                    if (employee.roleName == "Trainee")
                     {
                         trainees.Add(employee);
                     }
@@ -164,6 +163,13 @@ namespace ExamOnlineClient.Controllers
             {
                 return Json(result.StatusCode);
             }
+        }
+
+        public async Task<JsonResult> GoToExam(string Id)
+        {
+            HttpContext.Session.SetString("id", Id);
+            bool result = true;
+            return Json(new { success = result });
         }
 
     }

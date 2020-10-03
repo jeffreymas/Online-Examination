@@ -21,7 +21,13 @@ namespace ExamOnlineClient.Controllers
         };
         public IActionResult Index()
         {
-            return View();
+
+            var roleName = HttpContext.Session.GetString("role");
+            if (roleName == "Trainee")
+            {
+                return View();
+            }
+            return Redirect("/notfound");
         }
         public IActionResult LoadResult()
         {

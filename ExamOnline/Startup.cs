@@ -41,6 +41,7 @@ namespace ExamOnline
             services.AddScoped<EventsRepo>();
             services.AddScoped<SubjectsRepo>();
             services.AddScoped<NotifRepo>();
+            services.AddScoped<SectionRepository>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {

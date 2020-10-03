@@ -19,6 +19,7 @@ C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_E
 C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnlineClient\obj\Debug\netcoreapp2.1\Razor\Views\Account\Login.g.cshtml.cs
 C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnlineClient\obj\Debug\netcoreapp2.1\Razor\Views\Account\Notfound.g.cshtml.cs
 C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnlineClient\obj\Debug\netcoreapp2.1\Razor\Views\Account\Profile.g.cshtml.cs
+C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnlineClient\obj\Debug\netcoreapp2.1\Razor\Views\Answer\Index.g.cshtml.cs
 C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnlineClient\obj\Debug\netcoreapp2.1\Razor\Views\EventDetails\Index.g.cshtml.cs
 C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnlineClient\obj\Debug\netcoreapp2.1\Razor\Views\Events\Index.g.cshtml.cs
 C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnlineClient\obj\Debug\netcoreapp2.1\Razor\Views\Examinations\ExamPage.g.cshtml.cs
@@ -31,8 +32,9 @@ C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_E
 C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnlineClient\obj\Debug\netcoreapp2.1\Razor\Views\Home\Privacy.g.cshtml.cs
 C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnlineClient\obj\Debug\netcoreapp2.1\Razor\Views\Layout\_Layout.g.cshtml.cs
 C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnlineClient\obj\Debug\netcoreapp2.1\Razor\Views\Notifications\Index.g.cshtml.cs
-C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnlineClient\obj\Debug\netcoreapp2.1\Razor\Views\Questions\ExamQuestion.g.cshtml.cs
+C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnlineClient\obj\Debug\netcoreapp2.1\Razor\Views\Notification\Index.g.cshtml.cs
 C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnlineClient\obj\Debug\netcoreapp2.1\Razor\Views\Questions\ManageQuestions.g.cshtml.cs
+C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnlineClient\obj\Debug\netcoreapp2.1\Razor\Views\ResultTrainer\Index.g.cshtml.cs
 C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnlineClient\obj\Debug\netcoreapp2.1\Razor\Views\Result\Index.g.cshtml.cs
 C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnlineClient\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.g.cshtml.cs
 C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnlineClient\obj\Debug\netcoreapp2.1\Razor\Views\Shared\NotFound.g.cshtml.cs
@@ -48,3 +50,4 @@ C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_E
 C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnlineClient\obj\Debug\netcoreapp2.1\ExamOnlineClient.csproj.CopyComplete
 C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnlineClient\obj\Debug\netcoreapp2.1\ExamOnlineClient.dll
 C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnlineClient\obj\Debug\netcoreapp2.1\ExamOnlineClient.pdb
+C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnlineClient\obj\Debug\netcoreapp2.1\Razor\Views\Sections\Index.g.cshtml.cs

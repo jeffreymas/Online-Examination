@@ -24,5 +24,8 @@ namespace ExamOnline.Models
         [ForeignKey("Subjects")]
         public string SubjectId { get; set; }
         public Subjects Subjects { get; set; }
+        [ForeignKey("Section")]
+        public string SectionId { get; set; }
+        public Section Section { get; set; }
     }
 }

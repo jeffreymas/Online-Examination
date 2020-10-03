@@ -16,7 +16,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header no-bd">
-                    <h5 class="modal-title"><span class="fw-mediumbold">Job List</span></h5>
+                    <h5 class="modal-title"><span class="fw-mediumbold">Event</span></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -41,7 +41,7 @@
                             <div class="col-sm-12">
                                 <div class="form-group form-group-default">
                                     <label>End Date</label>
-                                    <input type="date" id="EndDate" name="EndDate" class="form-control" placeholder="Start Date" min="2010-01-01" max="2050-12-31">
+                                    <input type="date" id="EndDate" name="EndDate" class="form-control" placeholder="End Date" min="2010-01-01" max="2050-12-31">
                                 </div>
                             </div>
                         </div>
@@ -103,6 +103,7 @@
                                 <th>Event</th>
                                 <th>Start Date</th>
                                 <th>End Date</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                     </table>
@@ -115,5 +116,6 @@
 </div>
 
 @section Scripts{
+    @*<script src="~/js/Script/EventTrainer.js"></script>*@ 
     <script src="~/js/Script/EventScript.js"></script>
 }

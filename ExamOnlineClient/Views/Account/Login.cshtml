@@ -60,28 +60,7 @@
     <script src="~/js/metisMenu.min.js"></script>
     <script src="~/js/sweetalert2@9.js"></script>
     <!-- PAGE LEVEL SCRIPTS-->
-    <script type="text/javascript">
-        $(function () {
-            $('#login-form').validate({
-                errorClass: "help-block",
-                rules: {
-                    email: {
-                        required: true,
-                        email: true
-                    },
-                    password: {
-                        required: true
-                    }
-                },
-                highlight: function (e) {
-                    $(e).closest(".form-group").addClass("has-error")
-                },
-                unhighlight: function (e) {
-                    $(e).closest(".form-group").removeClass("has-error")
-                },
-            });
-        });
-    </script>
+
     <script src="~/js/Script/Login.js"></script>
 </body>
 </html>

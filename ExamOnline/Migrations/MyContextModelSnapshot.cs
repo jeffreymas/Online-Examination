@@ -144,15 +144,33 @@ namespace ExamOnline.Migrations
 
                     b.Property<string>("Questions");
 
+                    b.Property<string>("SectionId");
+
                     b.Property<string>("SubjectId");
 
                     b.Property<bool>("isDelete");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("SectionId");
+
                     b.HasIndex("SubjectId");
 
                     b.ToTable("tb_m_question");
+                });
+
+            modelBuilder.Entity("ExamOnline.Models.Section", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.Property<bool>("isDelete");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("tb_t_Section");
                 });
 
             modelBuilder.Entity("ExamOnline.Models.Subjects", b =>
@@ -196,6 +214,10 @@ namespace ExamOnline.Migrations
 
             modelBuilder.Entity("ExamOnline.Models.Question", b =>
                 {
+                    b.HasOne("ExamOnline.Models.Section", "Section")
+                        .WithMany()
+                        .HasForeignKey("SectionId");
+
                     b.HasOne("ExamOnline.Models.Subjects", "Subjects")
                         .WithMany()
                         .HasForeignKey("SubjectId");

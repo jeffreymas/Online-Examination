@@ -94,10 +94,8 @@
                                     <div>
                                         <a>E. </a><input type="radio" id="optionE" name="Answers" asp-for="Answers" value=@Model.Question.OptionE /> <span>@Model.Question.OptionE</span>
                                     </div>
-
                                 </form>
                             </div>
-
                         </dlv>
                     </div>
                     <hr>
@@ -124,7 +122,7 @@
                     else {
                         alert('Yout Examination is Oveer');
                         clearInterval(_tick);
-                        window.location.href = "/result/";
+                        window.location.href = "/examinations/submit/";
                     }
                 }, 1000);
             }

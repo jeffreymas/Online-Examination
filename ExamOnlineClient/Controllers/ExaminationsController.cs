@@ -28,12 +28,25 @@ namespace ExamOnlineClient.Controllers
         };
         public IActionResult Index()
         {
-            return View();
+            var roleName = HttpContext.Session.GetString("role");
+            if (roleName == "Admin" || roleName == "Trainer")
+            {
+                return View();
+            }else if (roleName == "Trainee")
+            {
+                return Redirect("/examinations/userindex");
+            }
+            return Redirect("/notfound");
         }
 
         public IActionResult UserIndex()
         {
-            return View();
+            var roleName = HttpContext.Session.GetString("role");
+            if (roleName == "Trainee")
+            {
+                return View();
+            }
+            return Redirect("/notfound");
         }
         public IActionResult start(int qno)
         {
@@ -91,9 +104,15 @@ namespace ExamOnlineClient.Controllers
             var created = answer.Examination.CreatedDate.UtcDateTime;
             var available2 = DateTime.Compare(date1, created.AddHours(6));
             var available3 = DateTime.Compare(date1, date3);
-            if ( available < 0 && available2 < 0 && available3 < 0)
+            if ( available < 0 && available2 < 0 && available3 > 0)
             {
-                return View(ExA);
+                var roleName = HttpContext.Session.GetString("role");
+                if (roleName == "Trainee")
+                {
+                    return View(ExA);
+                }
+                return Redirect("/notfound");
+                
             }
             return Redirect("/result/");
         }
@@ -119,9 +138,15 @@ namespace ExamOnlineClient.Controllers
 
             return RedirectToAction("ExamPage", new{@qno = qno});
         }
+
         public IActionResult ShowReschedule()
         {
-            return View();
+            var roleName = HttpContext.Session.GetString("role");
+            if (roleName == "Trainer" || roleName == "Admin")
+            {
+                return View();
+            }
+            return Redirect("/notfound");
         }
 
         public IActionResult LoadEmployee()
@@ -155,9 +180,13 @@ namespace ExamOnlineClient.Controllers
             }
             return Json(trainees);
         }
+
         public IActionResult LoadExamination()
         {
+            List<EmployeeVM> _trainees = this.LoadAPI().Result;
             IEnumerable<Examination> examnations = null;
+            List<ExaminationVM> loadExamination = new List<ExaminationVM>();
+            
             //var token = HttpContext.Session.GetString("token");
             //client.DefaultRequestHeaders.Add("Authorization", token);
             var resTask = client.GetAsync("examinations");
@@ -169,14 +198,35 @@ namespace ExamOnlineClient.Controllers
                 var readTask = result.Content.ReadAsAsync<List<Examination>>();
                 readTask.Wait();
                 examnations = readTask.Result;
+
+                foreach (var examination in examnations)
+                {
+                    foreach (var trainee in _trainees)
+                    {
+                        if (examination.EmployeeId == trainee.id )
+                        {
+                            ExaminationVM examinationDetail = new ExaminationVM();
+                            examinationDetail.Id = examination.Id;
+                            examinationDetail.isDelete = examination.isDelete;
+                            examinationDetail.CreatedDate = examination.CreatedDate;
+                            examinationDetail.RescheduleDate = examination.RescheduleDate;
+                            examinationDetail.EmployeeId = examination.EmployeeId;
+                            examinationDetail.EmployeeName = trainee.name;
+                            examinationDetail.SubjectId = examination.SubjectId;
+                            examinationDetail.Subjects = examination.Subjects;
+
+                            loadExamination.Add(examinationDetail);
+                        }
+
+                    }
+                }
             }
             else
             {
                 examnations = Enumerable.Empty<Examination>();
                 ModelState.AddModelError(string.Empty, "Server Error try after sometimes.");
             }
-            return Json(examnations);
-
+            return Json(loadExamination);
         }
 
         public IActionResult GetById(string Id)
@@ -342,6 +392,36 @@ namespace ExamOnlineClient.Controllers
                 return Json(result);
             }
             return Json(404);
+        }
+
+        public async Task<List<EmployeeVM>> LoadAPI()
+        {
+            List<EmployeeVM> trainees = new List<EmployeeVM>();
+            List<EmployeeVM> employeeList = null;
+            API.DefaultRequestHeaders.Add("Authorization", HttpContext.Session.GetString("JWToken"));
+            var resTask = API.GetAsync("users");
+            resTask.Wait();
+            var result = resTask.Result;
+
+            if (result.IsSuccessStatusCode)
+            {
+                var readTask = result.Content.ReadAsAsync<List<EmployeeVM>>();
+                readTask.Wait();
+                employeeList = readTask.Result;
+                foreach (var employee in employeeList)
+                {
+                    if (employee.roleName == "Trainee" || employee.roleName == "Trainer")
+                    {
+                        trainees.Add(employee);
+                    }
+                }
+            }
+            else
+            {
+                trainees = null;
+                ModelState.AddModelError(string.Empty, "Error! Please try again");
+            }
+            return trainees;
         }
     }
 }
