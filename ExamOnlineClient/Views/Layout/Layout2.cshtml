@@ -1,0 +1,97 @@
+﻿@using Microsoft.AspNetCore.Http;
+@{
+    var name = Context.Session.GetString("uname");
+    var role = Context.Session.GetString("role");
+
+}
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title>Online Examination</title>
+    <!-- GLOBAL MAINLY STYLES-->
+    <link href="~/html/dist/assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/html/dist/assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/html/dist/assets/vendors/themify-icons/css/themify-icons.css" rel="stylesheet" />
+    @*<link href="~/css/Style.css" rel="stylesheet" />*@
+    <!-- PLUGINS STYLES-->
+    <link href="~/html/dist/assets/vendors/DataTables/datatables.min.css" rel="stylesheet" />
+    <!-- THEME STYLES-->
+    <link href="~/html/dist/assets/css/main.min.css" rel="stylesheet" />
+    <!-- PAGE LEVEL STYLES-->
+
+</head>
+<body class="fixed-navbar">
+    <div class="page-wrapper">
+        <!-- START HEADER-->
+        <header class="header">
+            <div class="flexbox flex-1">
+                <!-- START TOP-LEFT TOOLBAR-->
+                    <ul class="nav navbar-toolbar">
+                        <li>
+                            <a class="nav-link sidebar-toggler js-sidebar-toggler"><i class="ti-menu"></i></a>
+                        </li>
+                        <li>
+                            <form class="navbar-search" action="javascript:;">
+                                <div class="rel">
+                                    <span class="search-icon"><i class="ti-search"></i></span>
+                                    <input class="form-control" placeholder="Search here...">
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                <!-- END TOP-LEFT TOOLBAR-->
+                <!-- START TOP-RIGHT TOOLBAR-->
+                <ul class="nav navbar-toolbar">
+                    <li class="dropdown dropdown-user">
+                        <a class="nav-link dropdown-toggle link" data-toggle="dropdown">
+                            <img src="~/html/dist/assets/img/admin-avatar.png" />
+                            <span></span>@Context.Session.GetString("name")<i class="fa fa-angle-down m-l-5"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="/profile"><i class="fa fa-user"></i>Profile</a>
+                            <li class="dropdown-divider"></li>
+                            <a class="dropdown-item" href="/logout"><i class="fa fa-power-off"></i>Logout</a>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- END TOP-RIGHT TOOLBAR-->
+            </div>
+        </header>
+        <!-- END HEADER-->
+        <!-- START SIDEBAR-->
+        <!-- END SIDEBAR-->
+        @RenderBody()
+    </div>
+    <!-- BEGIN PAGA BACKDROPS-->
+    <div class="sidenav-backdrop backdrop"></div>
+    <div class="preloader-backdrop">
+        <div class="page-preloader">Loading</div>
+    </div>
+    <!-- END PAGA BACKDROPS-->
+    <!-- CORE PLUGINS-->
+    <script src="~/html/dist/assets/vendors/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script src="~/html/dist/assets/vendors/popper.js/dist/umd/popper.min.js" type="text/javascript"></script>
+    <script src="~/html/dist/assets/vendors/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/html/dist/assets/vendors/metisMenu/dist/metisMenu.min.js" type="text/javascript"></script>
+    <script src="~/html/dist/assets/vendors/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL PLUGINS-->
+    <script src="~/html/dist/assets/vendors/DataTables/datatables.min.js" type="text/javascript"></script>
+    <!-- CORE SCRIPTS-->
+    <script src="~/html/dist/assets/js/app.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL SCRIPTS-->
+    <script src="~/js/moment.min.js"></script>
+    <script src="~/js/datatables.min.js"></script>
+    <script src="~/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/js/jquery.dataTables.min.js"></script>
+    <!-- PAGE LEVEL SCRIPTS-->
+    <script src="~/js/sweetalert2@9.js"></script>
+    <script src="~/js/metisMenu.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

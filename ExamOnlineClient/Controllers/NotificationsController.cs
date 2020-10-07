@@ -38,7 +38,7 @@ namespace ExamOnlineClient.Controllers
             //var token = HttpContext.Session.GetString("token");
             //client.DefaultRequestHeaders.Add("Authorization", token);
             API.DefaultRequestHeaders.Add("Authorization", HttpContext.Session.GetString("JWToken"));
-            var resTask = API.GetAsync("users");
+            var resTask = API.GetAsync("exams");
             resTask.Wait();
 
             var result = resTask.Result;

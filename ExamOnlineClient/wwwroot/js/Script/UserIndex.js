@@ -22,9 +22,20 @@ function loadData() {
 
 function ExamPage() {
     debugger;
-    var qno = 1;
+    var qno = 0;   
     $.ajax({
         url: "/examinations/start/",
+        data: { qno: qno }
+    }).then((result) => {
+        window.location.href = "/examinations/exampage/";
+    })
+}
+
+function ExamPage2() {
+    debugger;
+    var qno = 0;
+    $.ajax({
+        url: "/examinations/StartSection2/",
         data: { qno: qno }
     }).then((result) => {
         window.location.href = "/examinations/exampage/";

@@ -17,5 +17,6 @@ namespace ExamOnline.ViewModels
         public string ExamId { get; set; }
         public Examination Examination { get; set; }
         public int QuestionNummber { get; set; }
+        public string Section { get; set; }
     }
 }

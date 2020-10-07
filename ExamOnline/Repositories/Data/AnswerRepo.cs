@@ -22,13 +22,21 @@ namespace ExamOnline.Repositories.Data
 
         public override async Task<List<Answer>> GetAll()
         {
-            List<AnswerVM> list = new List<AnswerVM>();
-            var data = await _context.Answer.Include("Question").Where(x => x.isDelete == false).ToListAsync();
-            if (data.Count == 0)
+            List<Answer> answerList = null;
+            try
             {
-                return null;
+                answerList = await _context.Answer.Include("Question").Where(x => x.isDelete == false).ToListAsync();
+                if (answerList.Count == 0)
+                {
+                    return null;
+                }
+                return answerList;
             }
-            return data;
+            catch(Exception err)
+            {
+                Console.WriteLine(err);
+            }
+            return answerList;
         }
         public override async Task<Answer> GetById(string Id)
         {

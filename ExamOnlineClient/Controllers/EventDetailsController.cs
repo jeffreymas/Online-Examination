@@ -83,7 +83,7 @@ namespace ExamOnlineClient.Controllers
         public async Task<List<EmployeeVM>> LoadAPI()
         {
             API.DefaultRequestHeaders.Add("Authorization", HttpContext.Session.GetString("JWToken"));
-            var resTask = API.GetAsync("users");
+            var resTask = API.GetAsync("exams");
             resTask.Wait();
             var result = resTask.Result;
 

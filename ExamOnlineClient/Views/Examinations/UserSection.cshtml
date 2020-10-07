@@ -1,0 +1,126 @@
+﻿
+@{
+    ViewData["Title"] = "UserSection";
+    Layout = "~/Views/Layout/Layout2.cshtml";
+}
+
+
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    #container {
+        height: 100%;
+        width: 100%;
+        font-size: 0;
+    }
+
+    #left, #middle, #right {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        vertical-align: top;
+        font-size: 12px;
+    }
+    }
+</style>
+<br />
+<br />
+    <div class="page-heading">
+        <h1 class="page-title">Online Examination</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/"><i class="la la-home font-20"></i></a>
+            </li>
+        </ol>
+    </div>
+    <div class="page-content fade-in-up">
+        <div class="ibox">
+            @*<div class="ibox-head">
+                <div class="ibox-title">Data Table</div>
+                </div>*@
+            <div class="ibox-body">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label" for="Subject">Subject : </label>
+                        <a id="Subject"></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="form-control-label" for="Schedule">Schedule : </label>
+                        <a id="CreatedDate"></a>
+                    </div>
+                </div>
+                <hr>
+                <div id="middle">
+                    <button type="button" id="ExamPage" onclick="ExamPage2();" class="btn btn-success button button4">Start</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+                <div id="right">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Guidge</button>
+                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <h3>Keterangan Ujian</h3>
+                                <a>
+                                    Ujian ini bersifat pilihan berganda, akan terdapat 10 soal dengan pertanyaan sesuai dengan subject ujian yang tertera. Ujian ini bersifat 10 menit. Jika anda sudah menyelesaikan ujian anda dapat menekan tombol finish atau menunggu hingga waktu habis. Hasil ujian akan langsung ditampilkan setelah ujian berakhir.
+                                    Ujian dapat dilakukan jika waktu sudah memasuki waktu ujian. Ujian tidak akan dapat dilakukan jika waktu ujian sudah melewati 6 jam dari waktu yang seharusnya.
+                                    Anda tetap dapat masuk Kembali jika keluar atau sudah menekan tombol finish selama waktu yang diberikan masih ada.
+
+                                </a><br /><br />
+                                <h3>Keterangan Reschedule</h3>
+                                <a>
+                                    Reschedule dapat dilakuakan jika anda mengalami kendala dengan waktu ujian yang diberikan. Keterangan reschedule dapat dilihat pada menu notification. Waktu ujian akan berubah jika reschedule anda bersatus approve dan tidak berubah jika berstatus rejected. Harap hubungi trainer untuk melakukan reschedule.
+                                </a>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- END PAGE CONTENT-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Reschedule</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group form-group-default">
+                        <label for="schedule">Start date:</label>
+                        <input type="datetime-local" id="Schedule" name="schedule">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="Update" onclick="Update();" data-dismiss="modal" class="btn btn-success button button4">Reschedule</button>
+                <button type="button" data-dismiss="modal" class="btn btn-warning button button4">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function ExamPage2() {
+        debugger;
+        var qno = 0;
+        $.ajax({
+            url: "/examinations/StartSection2/",
+            data: { qno: qno }
+        }).then((result) => {
+            window.location.href = "/examinations/exampage/";
+        })
+    }
+</script>
+@section Scripts{
+    <script src="~/js/Script/UserIndex.js"></script>
+}
+
+

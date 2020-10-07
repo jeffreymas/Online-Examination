@@ -60,7 +60,7 @@ namespace ExamOnline.Controllers
             {
                 if (item.Status == true)
                 {
-                    count = count + 10;
+                    count = count + 5;
                 }
             }
             examination.Score = count;

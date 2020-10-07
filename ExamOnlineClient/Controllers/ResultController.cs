@@ -17,7 +17,7 @@ namespace ExamOnlineClient.Controllers
         };
         readonly HttpClient API = new HttpClient
         {
-            BaseAddress = new Uri("http://winarto-001-site1.dtempurl.com/api/")
+            BaseAddress = new Uri("http://winarto-001-site1.dtempurl.com/api/exams/")
         };
         public IActionResult Index()
         {
@@ -28,6 +28,12 @@ namespace ExamOnlineClient.Controllers
                 return View();
             }
             return Redirect("/notfound");
+        }
+
+        [Route("ExamResult")]
+        public IActionResult Resultex()
+        {
+            return View();
         }
         public IActionResult LoadResult()
         {
@@ -52,6 +58,29 @@ namespace ExamOnlineClient.Controllers
             }
             return Json(examinations);
 
+        }
+        public IActionResult ExResult()
+        {
+            var id = HttpContext.Session.GetString("id");
+            Examination examination = null;
+            //var token = HttpContext.Session.GetString("token");
+            //client.DefaultRequestHeaders.Add("Authorization", token);
+            var resTask1 = client.GetAsync("examinations/details/" + id);
+            resTask1.Wait();
+            //HttpContext.Session.SetInt32("joblists", Id);
+            var result1 = resTask1.Result;
+            if (result1.IsSuccessStatusCode)
+            {
+                var readTask1 = result1.Content.ReadAsAsync<Examination>();
+                readTask1.Wait();
+
+                examination = readTask1.Result;
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Server Error.");
+            }
+            return Json(examination);
         }
     }
 }

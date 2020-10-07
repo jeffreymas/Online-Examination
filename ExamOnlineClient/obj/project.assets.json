@@ -12556,11 +12556,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jepri\\Documents\\GitHub\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\ExamOnlineClient\\ExamOnlineClient.csproj",
+      "projectUniqueName": "C:\\Users\\Jepri\\Documents\\GitHub\\Online-Examination\\ExamOnlineClient\\ExamOnlineClient.csproj",
       "projectName": "ExamOnlineClient",
-      "projectPath": "C:\\Users\\Jepri\\Documents\\GitHub\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\ExamOnlineClient\\ExamOnlineClient.csproj",
+      "projectPath": "C:\\Users\\Jepri\\Documents\\GitHub\\Online-Examination\\ExamOnlineClient\\ExamOnlineClient.csproj",
       "packagesPath": "C:\\Users\\Jepri\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jepri\\Documents\\GitHub\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\ExamOnlineClient\\obj\\",
+      "outputPath": "C:\\Users\\Jepri\\Documents\\GitHub\\Online-Examination\\ExamOnlineClient\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12579,8 +12579,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\Jepri\\Documents\\GitHub\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\ExamOnline\\ExamOnline.csproj": {
-              "projectPath": "C:\\Users\\Jepri\\Documents\\GitHub\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\ExamOnline\\ExamOnline.csproj"
+            "C:\\Users\\Jepri\\Documents\\GitHub\\Online-Examination\\ExamOnline\\ExamOnline.csproj": {
+              "projectPath": "C:\\Users\\Jepri\\Documents\\GitHub\\Online-Examination\\ExamOnline\\ExamOnline.csproj"
             }
           }
         }

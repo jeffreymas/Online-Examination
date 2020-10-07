@@ -73,8 +73,8 @@ function GetById(number) {
         debugger;
         $('#Id').append(result.id);
         $('#Name').append(result.employeeId);
-        $('#Res').append(result.rescheduleDate);
-
+        var date = moment(result.rescheduleDate).format("DD MMMM YYYY, h:mm:ss a");
+        $('#Res').append(date);
         $('#Name').val(result.employeeId);
         $('#Id').val(result.id);
         $('#Update').show();

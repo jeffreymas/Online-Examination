@@ -22,7 +22,8 @@ $(document).ready(function () {
             },
             { "data": "question.questions" },
             { "data": "question.key" },
-            { "data": "answers" }           
+            { "data": "answers" }
+            //console.log(row);
         ]
     });
 });

@@ -12535,11 +12535,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jepri\\Documents\\GitHub\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\ExamOnline\\ExamOnline.csproj",
+      "projectUniqueName": "C:\\Users\\Jepri\\Documents\\GitHub\\Online-Examination\\ExamOnline\\ExamOnline.csproj",
       "projectName": "ExamOnline",
-      "projectPath": "C:\\Users\\Jepri\\Documents\\GitHub\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\ExamOnline\\ExamOnline.csproj",
+      "projectPath": "C:\\Users\\Jepri\\Documents\\GitHub\\Online-Examination\\ExamOnline\\ExamOnline.csproj",
       "packagesPath": "C:\\Users\\Jepri\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jepri\\Documents\\GitHub\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\Kelompok1_Exam-Online_Rio_Aldy_Jepri\\ExamOnline\\obj\\",
+      "outputPath": "C:\\Users\\Jepri\\Documents\\GitHub\\Online-Examination\\ExamOnline\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

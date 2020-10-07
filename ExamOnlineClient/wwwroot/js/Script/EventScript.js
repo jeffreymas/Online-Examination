@@ -91,9 +91,8 @@ $(document).ready(function () {
             {
                 "sortable": false,
                 "render": function (data, type, row, meta) {
-                    //console.log(row);
                     $('[data-toggle="tooltip"]').tooltip();
-                    return  '<button class="btn btn-outline-info btn-circle" data-placement="right" data-toggle="tooltip" data-animation="false" title="Details" onclick="return GetEventDetails2(' + meta.row + ')" ><i class="fa fa-lg fa-eye"></i></button>'
+                    return '<button class="btn btn-outline-info btn-circle" data-placement="right" data-toggle="tooltip" data-animation="false" title="Exam Result" onclick="return GetEventDetails2(' + meta.row + ')" ><i class="fa fa-lg fa-eye"></i></button>'
                 }
             }
         ]
@@ -161,7 +160,7 @@ function Save() {
     item.EndDate = $('#EndDate').val();
 
     if (moment(item.StartDate) > moment(item.EndDate)) {
-        return swal.fire('Error', 'Start date is behind end date', 'error');
+        return swal.fire('Error', 'End date is behind Start date', 'error');
             ClearScreen();
         }
     

@@ -13,6 +13,6 @@
     <ToolsVersionPromptShown>3.9</ToolsVersionPromptShown>
     <View_SelectedScaffolderID>RazorViewEmptyScaffolder</View_SelectedScaffolderID>
     <View_SelectedScaffolderCategoryPath>root/View</View_SelectedScaffolderCategoryPath>
-    <WebStackScaffolding_LayoutPageFile>~/Views/Layout/_Layout.cshtml</WebStackScaffolding_LayoutPageFile>
+    <WebStackScaffolding_LayoutPageFile>~/Views/Layout/Layout2.cshtml</WebStackScaffolding_LayoutPageFile>
   </PropertyGroup>
 </Project>

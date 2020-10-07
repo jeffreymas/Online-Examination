@@ -34,6 +34,16 @@ $(document).ready(function () {
             },
             { "data": "score" },
             {
+                "data": "score",
+                "render": function (score) {
+                    if (score >= 80) {
+                        return "Passed";
+                    } else {
+                        return "Failed";
+                    }
+                }
+            },
+            {
                 "sortable": false,
                 "render": function (data, type, row, meta) {
                     //console.log(row);

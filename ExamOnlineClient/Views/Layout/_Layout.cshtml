@@ -25,6 +25,7 @@
     <!-- THEME STYLES-->
     <link href="~/html/dist/assets/css/main.min.css" rel="stylesheet" />
     <!-- PAGE LEVEL STYLES-->
+
 </head>
 <body class="fixed-navbar">
     <div class="page-wrapper">
@@ -89,28 +90,28 @@
                     @if (role == "Admin" || role == "Trainer")
                     {
                         @*<li>
-                            <a href="javascript:;">
-                                <i class="sidebar-item-icon fa fa-meetup"></i>
-                                <span class="nav-label">Manage</span><i class="fa fa-angle-left arrow"></i>
-                            </a>
-                            <ul class="nav-2-level collapse">
-                                <li>
-                                    <a href="/events">Events</a>
-                                </li>
-                                <li>
-                                    <a href="/eventdetails">Events Details</a>
-                                </li>
-                                <li>
-                                    <a href="/subjects">Subjects</a>
-                                </li>
-                                <li>
-                                    <a href="/questions">Questions</a>
-                                </li>
-                                <li>
-                                    <a href="/Examinations">Examinations</a>
-                                </li>
-                            </ul>
-                        </li>*@
+                <a href="javascript:;">
+                    <i class="sidebar-item-icon fa fa-meetup"></i>
+                    <span class="nav-label">Manage</span><i class="fa fa-angle-left arrow"></i>
+                </a>
+                <ul class="nav-2-level collapse">
+                    <li>
+                        <a href="/events">Events</a>
+                    </li>
+                    <li>
+                        <a href="/eventdetails">Events Details</a>
+                    </li>
+                    <li>
+                        <a href="/subjects">Subjects</a>
+                    </li>
+                    <li>
+                        <a href="/questions">Questions</a>
+                    </li>
+                    <li>
+                        <a href="/Examinations">Examinations</a>
+                    </li>
+                </ul>
+            </li>*@
                         <li>
                             <a href="/events">
                                 <i class="sidebar-item-icon fa fa-window-maximize"></i>
@@ -124,15 +125,21 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/Examinations">
-                                <i class="sidebar-item-icon fa fa-edit"></i>
-                                <span class="nav-label">Examinations</span>
+                            <a href="/sections">
+                                <i class="sidebar-item-icon fa fa-clone"></i>
+                                <span class="nav-label">Sections</span>
                             </a>
                         </li>
                         <li>
                             <a href="/questions">
                                 <i class="sidebar-item-icon fa fa-question"></i>
                                 <span class="nav-label">Questions</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Examinations">
+                                <i class="sidebar-item-icon fa fa-edit"></i>
+                                <span class="nav-label">Examinations</span>
                             </a>
                         </li>
                         <li>

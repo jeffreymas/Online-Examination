@@ -3,7 +3,6 @@ C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_E
 C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnline\bin\Debug\netcoreapp2.1\ExamOnline.runtimeconfig.dev.json
 C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnline\bin\Debug\netcoreapp2.1\ExamOnline.dll
 C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnline\bin\Debug\netcoreapp2.1\ExamOnline.pdb
-C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnline\obj\Debug\netcoreapp2.1\ExamOnline.csprojAssemblyReference.cache
 C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnline\obj\Debug\netcoreapp2.1\ExamOnline.csproj.CoreCompileInputs.cache
 C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnline\obj\Debug\netcoreapp2.1\ExamOnline.RazorAssemblyInfo.cache
 C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnline\obj\Debug\netcoreapp2.1\ExamOnline.RazorAssemblyInfo.cs
@@ -12,3 +11,17 @@ C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_E
 C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnline\obj\Debug\netcoreapp2.1\ExamOnline.RazorTargetAssemblyInfo.cache
 C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnline\obj\Debug\netcoreapp2.1\ExamOnline.dll
 C:\Users\Jepri\Documents\GitHub\Kelompok1_Exam-Online_Rio_Aldy_Jepri\Kelompok1_Exam-Online_Rio_Aldy_Jepri\ExamOnline\obj\Debug\netcoreapp2.1\ExamOnline.pdb
+C:\Users\Jepri\Documents\GitHub\Online-Examination\ExamOnline\bin\Debug\netcoreapp2.1\ExamOnline.deps.json
+C:\Users\Jepri\Documents\GitHub\Online-Examination\ExamOnline\bin\Debug\netcoreapp2.1\ExamOnline.runtimeconfig.json
+C:\Users\Jepri\Documents\GitHub\Online-Examination\ExamOnline\bin\Debug\netcoreapp2.1\ExamOnline.runtimeconfig.dev.json
+C:\Users\Jepri\Documents\GitHub\Online-Examination\ExamOnline\bin\Debug\netcoreapp2.1\ExamOnline.dll
+C:\Users\Jepri\Documents\GitHub\Online-Examination\ExamOnline\bin\Debug\netcoreapp2.1\ExamOnline.pdb
+C:\Users\Jepri\Documents\GitHub\Online-Examination\ExamOnline\obj\Debug\netcoreapp2.1\ExamOnline.csprojAssemblyReference.cache
+C:\Users\Jepri\Documents\GitHub\Online-Examination\ExamOnline\obj\Debug\netcoreapp2.1\ExamOnline.csproj.CoreCompileInputs.cache
+C:\Users\Jepri\Documents\GitHub\Online-Examination\ExamOnline\obj\Debug\netcoreapp2.1\ExamOnline.RazorAssemblyInfo.cache
+C:\Users\Jepri\Documents\GitHub\Online-Examination\ExamOnline\obj\Debug\netcoreapp2.1\ExamOnline.RazorAssemblyInfo.cs
+C:\Users\Jepri\Documents\GitHub\Online-Examination\ExamOnline\obj\Debug\netcoreapp2.1\ExamOnline.AssemblyInfoInputs.cache
+C:\Users\Jepri\Documents\GitHub\Online-Examination\ExamOnline\obj\Debug\netcoreapp2.1\ExamOnline.AssemblyInfo.cs
+C:\Users\Jepri\Documents\GitHub\Online-Examination\ExamOnline\obj\Debug\netcoreapp2.1\ExamOnline.RazorTargetAssemblyInfo.cache
+C:\Users\Jepri\Documents\GitHub\Online-Examination\ExamOnline\obj\Debug\netcoreapp2.1\ExamOnline.dll
+C:\Users\Jepri\Documents\GitHub\Online-Examination\ExamOnline\obj\Debug\netcoreapp2.1\ExamOnline.pdb

@@ -1,0 +1,35 @@
+﻿@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Resultex";
+    Layout = "~/Views/Layout/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="page-heading">
+        <br />
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/"><i class="la la-home font-20"></i></a>
+            </li>
+        </ol>
+    </div>
+    <div class="page-content fade-in-up">
+        <div class="ibox">
+            <div class="ibox-body text-center">
+                <h1 class="admin-info">Hi  @Context.Session.GetString("name")</h1>
+                <br />
+                <br />
+                <h5 class="font-strong m-b-10 m-t-10" id="Id" hidden></h5>
+                <h2>Congratulations! you have finished the exam. </h2>
+                <br />
+                <h3 id="Message">Your score </h3>
+
+                <div class="m-b-20 text-muted"></div>
+            </div>
+        </div>
+    </div>
+    <!-- END PAGE CONTENT-->
+</div>
+@section Scripts{
+    <script src="~/js/Script/ExamResult.js"></script>
+}

@@ -38,7 +38,7 @@
                             </div>
                             <div class="col-sm-6 ">
                                 <div class="form-group form-group-default">
-                                    <label>Subject<small style="color:red">*</small></label>
+                                    <label>Section<small style="color:red">*</small></label>
                                     <select class="form-control" id="SectionOption" name="SectionOption" required></select>
                                 </div>
                             </div>
@@ -87,11 +87,10 @@
                         <div class="modal-footer no-bd">
                             <button type="button" id="add" class="btn btn-outline-success" data-dismiss="modal" onclick="Save();">Insert</button>
                             <button type="button" id="update" class="btn btn-outline-warning" data-dismiss="modal" onclick="Update();">Update</button>
-                            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
                         </div>
                     </form>
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -142,4 +141,5 @@
 
 @section Scripts{
     <script src="~/js/Script/Questions.js"></script>
+    <script src="~/js/bootstrap-notify.min.js"></script>
 }

@@ -48,7 +48,16 @@ namespace ExamOnlineClient.Controllers
             }
             return Redirect("/notfound");
         }
-        public IActionResult start(int qno)
+        public IActionResult UserSection()
+        {
+            var roleName = HttpContext.Session.GetString("role");
+            if (roleName == "Trainee")
+            {
+                return View();
+            }
+            return Redirect("/notfound");
+        }
+        public IActionResult start()
         {
             var id = HttpContext.Session.GetString("examid");
             Examination examination = new Examination();
@@ -59,17 +68,40 @@ namespace ExamOnlineClient.Controllers
             var result = StatusCode(200);
             return result;
         }
+
+        public IActionResult StartSection2()
+        {
+            var id = HttpContext.Session.GetString("examid");
+            HttpContext.Session.SetString("section", "Section2");
+            Examination examination = new Examination();
+            examination.Id = id;
+            examination.ExpiredDate = DateTime.UtcNow.AddSeconds(600);
+            InsertOrUpdate(examination, id);
+            this.cek = 0;
+            var result = StatusCode(200);
+            return result;
+        }
         public IActionResult ExamPage(int qno)
         {
+            //Validasi Pagination
             if (qno > 9)
             {
-                return Redirect("/result");
+                var sectioncek = HttpContext.Session.GetString("section");
+                if ( sectioncek == "Section1")
+                {
+                    return Redirect("/examinations/usersection");
+                }
+                else
+                {
+                    return Redirect("/ExamResult");
+                }
+                
             }else if(qno < 0)
             {
                 qno = 0;
             }
 
-            var direction = ViewBag.direction;
+            //Load data soal
             List<Answer> answ = null;
             ExA ExA = new ExA(); 
             var id = HttpContext.Session.GetString("examid");
@@ -86,7 +118,38 @@ namespace ExamOnlineClient.Controllers
             {
                 ModelState.AddModelError(string.Empty, "Server Error.");
             }
-            var answer = answ[qno];
+
+            var sectionsession = HttpContext.Session.GetString("section"); ;
+            Answer answer = null;
+            List<Answer> sectionAnswer = null;
+            if (sectionsession == "Section1")
+            {
+                //Masukan ID SECTION BASIC PROGRAMMING DISINI
+                sectionAnswer = answ.Where(x => x.Question.SectionId == "543f2732-7f2c-457e-8040-c37b7093a7ad").ToList();
+                Question question = null;
+                var resTask2 = client.GetAsync("questions/loadquestion/" + sectionAnswer[qno].QuestionId);
+                resTask2.Wait();
+                var result2 = resTask2.Result;
+                var json = JsonConvert.DeserializeObject(result2.Content.ReadAsStringAsync().Result).ToString();
+                question = JsonConvert.DeserializeObject<Question>(json);
+                answer = sectionAnswer[qno];
+                answer.Question = question;
+            }
+            else
+            {
+                //TAMBAHKAN SECTION OOP DI SINI
+                sectionAnswer = answ.Where(x => x.Question.SectionId == "73270830-2b1b-445e-879b-17096bef7b81").ToList();
+                Question question = null;
+                var resTask2 = client.GetAsync("questions/loadquestion/" + sectionAnswer[qno].QuestionId);
+                resTask2.Wait();
+                var result2 = resTask2.Result;
+                var json = JsonConvert.DeserializeObject(result2.Content.ReadAsStringAsync().Result).ToString();
+                question = JsonConvert.DeserializeObject<Question>(json);
+                answer = sectionAnswer[qno];
+                answer.Question = question;
+            }
+            //Set data soal
+            
             ExA.Id = answer.Id;
             ExA.QuestionId = answer.QuestionId;
             ExA.Question = answer.Question;
@@ -96,9 +159,11 @@ namespace ExamOnlineClient.Controllers
             ExA.ExamId = answer.ExamId;
             ExA.Examination = answer.Examination;
             ExA.QuestionNummber = qno;
+
+            //Validasi waktu ujian
             ViewBag.TimeExpired = answer.Examination.ExpiredDate;
             var date1 = DateTime.UtcNow;
-            var date2 = answer.Examination.ExpiredDate.Value.AddMinutes(10);
+            var date2 = answer.Examination.ExpiredDate.Value;
             var date3 = answer.Examination.CreatedDate.UtcDateTime;
             var available = DateTime.Compare(date1 , date2);
             var created = answer.Examination.CreatedDate.UtcDateTime;
@@ -114,7 +179,19 @@ namespace ExamOnlineClient.Controllers
                 return Redirect("/notfound");
                 
             }
-            return Redirect("/result/");
+            else if(available3 <= 0)
+            {
+                return Redirect("/notfound");
+            }
+            else if (sectionsession == "Section1")
+            {
+                return Redirect("/examinations/usersection");
+            }
+            else if (sectionsession == "Section2")
+            {
+                return Redirect("/ExamResult");
+            }
+            return Redirect("/notfound");
         }
 
         [HttpPost]
@@ -156,7 +233,7 @@ namespace ExamOnlineClient.Controllers
             //var token = HttpContext.Session.GetString("token");
             //client.DefaultRequestHeaders.Add("Authorization", token);
             API.DefaultRequestHeaders.Add("Authorization", HttpContext.Session.GetString("JWToken"));
-            var resTask = API.GetAsync("users");
+            var resTask = API.GetAsync("exams");
             resTask.Wait();
 
             var result = resTask.Result;

@@ -35,7 +35,9 @@ namespace ExamOnline.Repositories.Data
             entity.isDelete = false;
             await _context.Set<Examination>().AddAsync(entity);
             var createdItem = await _context.SaveChangesAsync();
-            var list = _context.Question.Where(x => x.SubjectId == entity.SubjectId && x.isDelete == false).ToArray();
+
+            //Random Soal Section 1
+            var list = _context.Question.Include("Section").Where(x => x.SubjectId == entity.SubjectId && x.isDelete == false && x.Section.Name == "Basic Programming").ToArray();
             var eof = list.Length;
             string[] qid = new string[10];
             bool cek = false;
@@ -68,7 +70,6 @@ namespace ExamOnline.Repositories.Data
                         await _context.Answer.AddAsync(answers);
                         _context.SaveChanges();
                         qid[i] = question.Id;
-                        var cc = qid[i];
                         cek = false;
                     }
                     else
@@ -76,6 +77,56 @@ namespace ExamOnline.Repositories.Data
                         i = i - 1;
                     }
                     
+                }
+                else
+                {
+                    i = i - 1;
+                }
+
+            }
+
+            //Random Question Section2
+            var list2 = _context.Question.Include("Section").Where(x => x.SubjectId == entity.SubjectId && x.isDelete == false && x.Section.Name == "OOP").ToArray();
+            var eof2 = list2.Length;
+            string[] qid2 = new string[10];
+            bool cek2 = false;
+            for (int i = 0; i < 10; i++)
+            {
+                var number = randDig.GenerateRandom();
+                var number2 = Convert.ToInt32(number);
+                if (number2 < eof)
+                {
+                    var question = list2[number2];
+                    for (int j = 0; j < qid2.Length; j++)
+                    {
+                        if (qid2[j] != question.Id)
+                        {
+                            cek2 = true;
+                        }
+                        else if (qid2[j] == question.Id)
+                        {
+                            cek2 = false;
+                            break;
+                        }
+                    }
+                    if (cek2 == true)
+                    {
+                        var answers = new Answer();
+                        answers.ExamId = entity.Id;
+                        answers.Answers = null;
+                        answers.isDelete = false;
+                        answers.Status = false;
+                        answers.QuestionId = question.Id;
+                        await _context.Answer.AddAsync(answers);
+                        _context.SaveChanges();
+                        qid2[i] = question.Id;
+                        cek2 = false;
+                    }
+                    else
+                    {
+                        i = i - 1;
+                    }
+
                 }
                 else
                 {

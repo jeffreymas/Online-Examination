@@ -6,6 +6,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using ExamOnline.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
 namespace ExamOnlineClient.Controllers
@@ -19,7 +20,16 @@ namespace ExamOnlineClient.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var roleName = HttpContext.Session.GetString("role");
+            if (roleName == "Admin" || roleName == "Trainer")
+            {
+                return View();
+            }
+            else if (roleName == "Trainee")
+            {
+                return Redirect("/examinations/userindex");
+            }
+            return Redirect("/notfound");    
         }
 
         public IActionResult LoadSection()

@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace ExamOnlineClient.Controllers
-{
+{                                   
     public class AccountController : Controller
     {
         readonly HttpClient client = new HttpClient
@@ -47,7 +47,7 @@ namespace ExamOnlineClient.Controllers
             string stringData = JsonConvert.SerializeObject(loginVM);
             var contentData = new StringContent(stringData, System.Text.Encoding.UTF8, "application/json");
 
-            var resTask = client.PostAsync("auths/login", contentData);
+            var resTask = client.PostAsync("exams/login", contentData);
 
             var result = resTask.Result;
             var responseData = result.Content.ReadAsStringAsync().Result;
@@ -68,6 +68,7 @@ namespace ExamOnlineClient.Controllers
                 HttpContext.Session.SetString("email", account.Name); // email 
                 HttpContext.Session.SetString("role", account.RoleName); // role
                 HttpContext.Session.SetString("name", account.Name); // nama
+                HttpContext.Session.SetString("section", "Section1"); // nama
                 //HttpContext.Session.SetString("verified", token.Claims.First(c => c.Type == "IsVerified").Value);
                 //HttpContext.Session.SetString("JWToken", authToken);
 

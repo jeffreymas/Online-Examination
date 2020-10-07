@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ExamOnline.Base;
+using ExamOnline.Context;
 using ExamOnline.Models;
 using ExamOnline.Repositories.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ExamOnline.Controllers
 {
@@ -15,9 +17,11 @@ namespace ExamOnline.Controllers
     public class QuestionsController : BaseController<Question, QuestionRepo>
     {
         readonly QuestionRepo _questionRepo;
-        public QuestionsController(QuestionRepo queestionRepo) : base(queestionRepo)
+        readonly MyContext _context;
+        public QuestionsController(QuestionRepo queestionRepo, MyContext myContext) : base(queestionRepo)
         {
             _questionRepo = queestionRepo;
+            _context = myContext;
         }
 
         [HttpPut("{id}")]
@@ -38,6 +42,14 @@ namespace ExamOnline.Controllers
                 return BadRequest("Update Failed");
             }
             return data;
+        }
+
+        [HttpGet]
+        [Route("loadquestion/{id}")]
+        public async Task<ActionResult> LoadSoal(string id)
+        {
+            var examination = await _context.Question.Include("Section").FirstOrDefaultAsync(x=> x.Id == id);
+            return Ok(examination);
         }
     }
 }

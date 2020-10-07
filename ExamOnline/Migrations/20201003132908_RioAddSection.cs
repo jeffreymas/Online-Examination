@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ExamOnline.Migrations
 {
-    public partial class JepinitTab : Migration
+    public partial class RioAddSection : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -52,6 +52,19 @@ namespace ExamOnline.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "tb_t_Section",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    isDelete = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_tb_t_Section", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "tb_t_event_details",
                 columns: table => new
                 {
@@ -67,32 +80,6 @@ namespace ExamOnline.Migrations
                         name: "FK_tb_t_event_details_tb_m_events_eventsId",
                         column: x => x.eventsId,
                         principalTable: "tb_m_events",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "tb_m_question",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    Questions = table.Column<string>(nullable: true),
-                    OptionA = table.Column<string>(nullable: true),
-                    OptionB = table.Column<string>(nullable: true),
-                    OptionC = table.Column<string>(nullable: true),
-                    OptionD = table.Column<string>(nullable: true),
-                    OptionE = table.Column<string>(nullable: true),
-                    Key = table.Column<string>(nullable: true),
-                    isDelete = table.Column<bool>(nullable: false),
-                    SubjectId = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_tb_m_question", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_tb_m_question_tb_m_subjects_SubjectId",
-                        column: x => x.SubjectId,
-                        principalTable: "tb_m_subjects",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -115,6 +102,39 @@ namespace ExamOnline.Migrations
                     table.PrimaryKey("PK_tb_t_examination", x => x.Id);
                     table.ForeignKey(
                         name: "FK_tb_t_examination_tb_m_subjects_SubjectId",
+                        column: x => x.SubjectId,
+                        principalTable: "tb_m_subjects",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "tb_m_question",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    Questions = table.Column<string>(nullable: true),
+                    OptionA = table.Column<string>(nullable: true),
+                    OptionB = table.Column<string>(nullable: true),
+                    OptionC = table.Column<string>(nullable: true),
+                    OptionD = table.Column<string>(nullable: true),
+                    OptionE = table.Column<string>(nullable: true),
+                    Key = table.Column<string>(nullable: true),
+                    isDelete = table.Column<bool>(nullable: false),
+                    SubjectId = table.Column<string>(nullable: true),
+                    SectionId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_tb_m_question", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_tb_m_question_tb_t_Section_SectionId",
+                        column: x => x.SectionId,
+                        principalTable: "tb_t_Section",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_tb_m_question_tb_m_subjects_SubjectId",
                         column: x => x.SubjectId,
                         principalTable: "tb_m_subjects",
                         principalColumn: "Id",
@@ -148,6 +168,11 @@ namespace ExamOnline.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_tb_m_question_SectionId",
+                table: "tb_m_question",
+                column: "SectionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_tb_m_question_SubjectId",
@@ -194,6 +219,9 @@ namespace ExamOnline.Migrations
 
             migrationBuilder.DropTable(
                 name: "tb_m_events");
+
+            migrationBuilder.DropTable(
+                name: "tb_t_Section");
 
             migrationBuilder.DropTable(
                 name: "tb_m_subjects");

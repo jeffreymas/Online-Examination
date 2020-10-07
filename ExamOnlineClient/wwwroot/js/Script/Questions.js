@@ -1,6 +1,6 @@
 ﻿var table = null;
 var arrSub = [];
-//var seldep = [];
+var arrSec = [];
 
 $(document).ready(function () {
     debugger;
@@ -90,26 +90,26 @@ LoadSubject($('#SubOption'))
 
 function LoadSection(element) {
     //debugger;
-    if (arrSub.length === 0) {
+    if (arrSec.length === 0) {
         $.ajax({
             type: "Get",
-            url: "/sections/LoadSection",
+            url: "/sections/loadsection",
             success: function (data) {
-                arrSub = data;
-                renderDepart(element);
+                arrSec = data;
+                _renderDepart(element);
             }
         });
     }
     else {
-        renderDepart(element);
+        _renderDepart(element);
     }
 }
 
-function renderDepart(element) {
+function _renderDepart(element) {
     var $option = $(element);
     $option.empty();
     $option.append($('<option/>').val('0').text('Select Section').hide());
-    $.each(arrSub, function (i, val) {
+    $.each(arrSec, function (i, val) {
         $option.append($('<option/>').val(val.id).text(val.name))
     });
 }
@@ -127,6 +127,7 @@ function GetById(number) {
         debugger;
         $('#Id').val(result.id);
         $('#SubOption').val(result.subjectId);
+        $('#SectionOption').val(result.sectionId);
         $('#QuestionDetail').val(result.questions);
         $('#OptionA').val(result.optionA);
         $('#OptionB').val(result.optionB);
@@ -142,74 +143,148 @@ function GetById(number) {
 
 function Save() {
     debugger;
-    var Ques = new Object();
-    Ques.id = null;
-    Ques.subjectId = $('#SubOption').val();
-    Ques.questions = $('#QuestionDetail').val();
-    Ques.optionA = $('#OptionA').val();
-    Ques.optionB = $('#OptionB').val();
-    Ques.optionC = $('#OptionC').val();
-    Ques.optionD = $('#OptionD').val();
-    Ques.optionE = $('#OptionE').val();
-    Ques.key = $('#Key').val();
-    $.ajax({
-        type: 'POST',
-        url: "/questions/InsertOrUpdate/",
-        cache: false,
-        dataType: "JSON",
-        data: Ques
-    }).then((result) => {
-        debugger;
-        if (result.statusCode == 200) {
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Data inserted Successfully',
-                showConfirmButton: false,
-                timer: 1500,
-            })
-            table.ajax.reload(null, false);
-        } else {
-            Swal.fire('Error', 'Failed to Input', 'error');
-            ClearScreen();
-        }
-    })
+    if ($('#OptionA').val() == $('#Key').val() || $('#OptionB').val() == $('#Key').val() || $('#OptionC').val() == $('#Key').val() || $('#OptionD').val() == $('#Key').val() || $('#OptionE').val() == $('#Key').val()) {
+        var Ques = new Object();
+        Ques.id = null;
+        Ques.subjectId = $('#SubOption').val();
+        Ques.sectionId = $('#SectionOption').val();
+        Ques.questions = $('#QuestionDetail').val();
+        Ques.optionA = $('#OptionA').val();
+        Ques.optionB = $('#OptionB').val();
+        Ques.optionC = $('#OptionC').val();
+        Ques.optionD = $('#OptionD').val();
+        Ques.optionE = $('#OptionE').val();
+        Ques.key = $('#Key').val();
+        $.ajax({
+            type: 'POST',
+            url: "/questions/InsertOrUpdate/",
+            cache: false,
+            dataType: "JSON",
+            data: Ques
+        }).then((result) => {
+            debugger;
+            if (result.statusCode == 200) {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Data inserted Successfully',
+                    showConfirmButton: false,
+                    timer: 1500,
+                })
+                table.ajax.reload(null, false);
+            } else {
+                Swal.fire('Error', 'Failed to Input', 'error');
+                ClearScreen();
+            }
+        })
+    } else {
+        debugger
+        $.notify({
+            // options
+            icon: 'fas fa-alarm-clock',
+            title: 'Notification : ',
+            message: 'One option must be the same as the key',
+        }, {
+            // settings
+            element: 'body',
+            type: "warning",
+            allow_dismiss: true,
+            placement: {
+                from: "top",
+                align: "center"
+            },
+            timer: 1000,
+            delay: 5000,
+            animate: {
+                enter: 'animated fadeInDown',
+                exit: 'animated fadeOutUp'
+            },
+            icon_type: 'class',
+            template: '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">' +
+                '<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' +
+                '<span data-notify="icon"></span> ' +
+                '<span data-notify="title">{1}</span> ' +
+                '<span data-notify="message">{2}</span>' +
+                '<div class="progress" data-notify="progressbar">' +
+                '<div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
+                '</div>' +
+                '<a href="{3}" target="{4}" data-notify="url"></a>' +
+                '</div>'
+        });
+    }
 }
 
 function Update() {
     debugger;
-    var Ques = new Object();
-    Ques.id = $('#Id').val();
-    Ques.subjectId = $('#SubOption').val();
-    Ques.questions = $('#QuestionDetail').val();
-    Ques.optionA = $('#OptionA').val();
-    Ques.optionB = $('#OptionB').val();
-    Ques.optionC = $('#OptionC').val();
-    Ques.optionD = $('#OptionD').val();
-    Ques.optionE = $('#OptionE').val();
-    Ques.key = $('#Key').val();
-    $.ajax({
-        type: 'POST',
-        url: "/questions/InsertOrUpdate/",
-        cache: false,
-        dataType: "JSON",
-        data: Ques
-    }).then((result) => {
-        debugger;
-        if (result.statusCode == 200) {
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Data Updated Successfully',
-                showConfirmButton: false,
-                timer: 1500,
-            });
-            table.ajax.reload(null, false);
-        } else {
-            Swal.fire('Error', 'Failed to Input', 'error');
-            ClearScreen();
-        }
-    })
+    if ($('#OptionA').val() == $('#Key').val() || $('#OptionB').val() == $('#Key').val() || $('#OptionC').val() == $('#Key').val() || $('#OptionD').val() == $('#Key').val() || $('#OptionE').val() == $('#Key').val()) {
+        var Ques = new Object();
+        Ques.id = $('#Id').val();
+        Ques.subjectId = $('#SubOption').val();
+        Ques.sectionId = $('#SectionOption').val();
+        Ques.questions = $('#QuestionDetail').val();
+        Ques.optionA = $('#OptionA').val();
+        Ques.optionB = $('#OptionB').val();
+        Ques.optionC = $('#OptionC').val();
+        Ques.optionD = $('#OptionD').val();
+        Ques.optionE = $('#OptionE').val();
+        Ques.key = $('#Key').val();
+        $.ajax({
+            type: 'POST',
+            url: "/questions/InsertOrUpdate/",
+            cache: false,
+            dataType: "JSON",
+            data: Ques
+        }).then((result) => {
+            debugger;
+            if (result.statusCode == 200) {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Data Updated Successfully',
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+                table.ajax.reload(null, false);
+            } else {
+                Swal.fire('Error', 'Failed to Input', 'error');
+                ClearScreen();
+            }
+        })
+    } else {
+        debugger
+        $.notify({
+            // options
+            icon: 'fas fa-alarm-clock',
+            title: 'Notification : ',
+            message: 'One option must be the same as the key',
+        }, {
+            // settings
+            element: 'body',
+            type: "warning",
+            allow_dismiss: true,
+            placement: {
+                from: "top",
+                align: "center"
+            },
+            timer: 1000,
+            delay: 5000,
+            animate: {
+                enter: 'animated fadeInDown',
+                exit: 'animated fadeOutUp'
+            },
+            icon_type: 'class',
+            template: '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">' +
+                '<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' +
+                '<span data-notify="icon"></span> ' +
+                '<span data-notify="title">{1}</span> ' +
+                '<span data-notify="message">{2}</span>' +
+                '<div class="progress" data-notify="progressbar">' +
+                '<div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
+                '</div>' +
+                '<a href="{3}" target="{4}" data-notify="url"></a>' +
+                '</div>'
+         });
+    }
 }
 
 function Delete(del) {
